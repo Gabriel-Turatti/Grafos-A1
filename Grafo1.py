@@ -33,7 +33,7 @@ class Grafo():
         return False
 
     def peso(self, u, v):
-        return u.vizinhos[v]
+        return u.vizinhos[v.id]
 
     def getNodo(self, id):
         return self.V[id]
@@ -58,6 +58,8 @@ class Grafo():
                     v = self.getNodo(valores[1])
                     u.conections += 1
                     v.conections += 1
+                    u.vizinhos[v.id] = valores[2]
+                    v.vizinhos[u.id] = valores[2]
                     self.nE += 1
                     self.E.append([u, v, valores[2]])
 
