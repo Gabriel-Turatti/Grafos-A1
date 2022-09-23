@@ -5,12 +5,26 @@ class Nodo():
         self.conections = 0
         self.vizinhos = {}
 
+    @property
+    def conections(self):
+        return self.conections
+
+    @property
+    def id(self):
+        return self.id
+
 class Grafo():
     def __init__(self):
         self.V = {}
         self.nV = 0
         self.E = []
         self.nE = 0
+
+    def vertices(self):
+        return self.V
+
+    def arestas(self):
+        return self.E
 
     def qtdVertices(self):
         return self.nV
