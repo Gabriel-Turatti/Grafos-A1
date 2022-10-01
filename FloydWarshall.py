@@ -12,9 +12,6 @@ def FloydWarshall(G):
                 M[index].append(float('inf'))
     for e in G.E:
         M[int(float(e[0].id))-1][int(float(e[1].id))-1] = int(float(e[2]))
-    
-    global M2
-    M2 = M
 
     for v1 in G.V:
         for v2 in G.V:
