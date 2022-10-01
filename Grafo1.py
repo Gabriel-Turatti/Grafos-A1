@@ -1,3 +1,6 @@
+from multiprocessing import connection
+
+
 class Nodo():
     def __init__(self, n, rotulo):
         self.id = n
@@ -5,13 +8,6 @@ class Nodo():
         self.conections = 0
         self.vizinhos = {}
 
-    @property
-    def conections(self):
-        return self.conections
-
-    @property
-    def id(self):
-        return self.id
 
 class Grafo():
     def __init__(self):

@@ -4,40 +4,60 @@ from Grafo1 import Grafo, Nodo
 def Hierholzer(g: Grafo):
     C = {}
     for e in g.arestas():
-        C[frozenset(e[0].id(), e[1].id())] = False
+        C[frozenset([e[0].id, e[1].id])] = False
     while True:
         i = 0
-        v = g.getNodo(g.arestas().keys()[i])
-        if v.conections() > 0:
+        v = list(g.vertices().keys())[i]
+        if g.getNodo(v).conections > 0:
             break
+        i += 1
     r, ciclo = buscaCiclo(g, v, C)
-    if r == False or C.values().find() != -1:
+    if r == False:
+        print(0)
         return (False, None)
     else:
-        return (True, ciclo)
+        try:
+            list(C.values()).index(False)
+        except ValueError:
+            print(1)
+            print(','.join(ciclo))
+            return (True, ciclo)
+        else:
+            print(0)
+            return (False, None)
+        
 
-
-def buscaCiclo(g: Grafo, v: Nodo, C):
+def buscaCiclo(g: Grafo, v: str, C):
     ciclo = []
-    ciclo.append(v)
+    v = g.getNodo(v)
+    ciclo.append(v.id)
     t = v
     while True:
         u = None
-        for x in list(v.vizinhos().keys()):
-            i = 0
-            if C[frozenset(x, v.id())] == False:
-                u = x
-                e = frozenset(x, v.id())
-                continue
-            return (False, None)
+        e = None
+        vizinhos = list(v.vizinhos.keys())
+        for x in vizinhos:
+            cont = len(vizinhos)
+            #print(C)
+            #print(f'x = {x}')
+            if C[frozenset([x, v.id])] == False:
+                u = g.getNodo(x)
+                e = frozenset([x, v.id])
+                break
+            else:
+                cont -= 1
+            if cont == 0:
+                return (False, None)
         C[e] = True
         v = u
-        ciclo.append(v)
+        #print(v.id, u.id)
+        ciclo.append(v.id)
+        #print(','.join(ciclo))
         if v == t:
             break
     for x in ciclo:
-        for u in list(x.vizinhos().keys()):
-            if C[frozenset(x, u.id())] == False:
+        for u in list(g.getNodo(x).vizinhos.keys()):
+            if C[frozenset([x, u])] == False:
                 (r, ciclo2) = buscaCiclo(g, x, C)
                 if r == False:
                     return (False, None)
@@ -49,9 +69,9 @@ def buscaCiclo(g: Grafo, v: Nodo, C):
     return (True, ciclo)
 
 
-'''grafo = Grafo()
-with open(r'D:\UFSC\Grafos\atividade1\Grafos-A1\facebook_santiago.net', 'r') as arquivo:
+grafo = Grafo()
+with open('teste_ciclo.net', 'r') as arquivo:
     info = arquivo.read()
     info = info.split('\n')
     grafo.lerArquivo(info)
-print(Hierholzer(grafo))'''
+(Hierholzer(grafo))

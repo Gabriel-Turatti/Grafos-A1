@@ -1,0 +1,13 @@
+*vertices 688
+1 "João Luiz Ferreira Júnior"
+2 "Renan Alfarth"
+3 "João Luiz Cadore"
+4 "aa"
+5 "b"
+*edges
+1 2 1.0
+1 3 1.0
+2 3 1.0
+4 2 1.0
+5 4 1.0
+2 5 1.0
