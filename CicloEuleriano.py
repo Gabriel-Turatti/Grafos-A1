@@ -5,13 +5,11 @@ def Hierholzer(g: Grafo):
     C = {}
     for e in g.arestas():
         C[frozenset([e[0].id, e[1].id])] = False
-    while True:
-        i = 0
-        v = list(g.vertices().keys())[i]
-        if g.getNodo(v).conections > 0:
+    for i in range(1, g.qtdVertices()):
+        v = g.getNodo(str(i))
+        if v.conections > 0:
             break
-        i += 1
-    r, ciclo = buscaCiclo(g, v, C)
+    r, ciclo = buscaCiclo(g, i, C)
     if r == False:
         print(0)
         return (False, None)
@@ -25,11 +23,11 @@ def Hierholzer(g: Grafo):
         else:
             print(0)
             return (False, None)
-        
+
 
 def buscaCiclo(g: Grafo, v: str, C):
     ciclo = []
-    v = g.getNodo(v)
+    v = g.getNodo(str(v))
     ciclo.append(v.id)
     t = v
     while True:
@@ -38,8 +36,6 @@ def buscaCiclo(g: Grafo, v: str, C):
         vizinhos = list(v.vizinhos.keys())
         for x in vizinhos:
             cont = len(vizinhos)
-            #print(C)
-            #print(f'x = {x}')
             if C[frozenset([x, v.id])] == False:
                 u = g.getNodo(x)
                 e = frozenset([x, v.id])
@@ -50,9 +46,7 @@ def buscaCiclo(g: Grafo, v: str, C):
                 return (False, None)
         C[e] = True
         v = u
-        #print(v.id, u.id)
         ciclo.append(v.id)
-        #print(','.join(ciclo))
         if v == t:
             break
     for x in ciclo:
@@ -70,7 +64,7 @@ def buscaCiclo(g: Grafo, v: str, C):
 
 
 grafo = Grafo()
-with open('teste_ciclo.net', 'r') as arquivo:
+with open(r'D:\UFSC\Grafos\atividade1\Grafos-A1\teste_ciclo.net', 'r') as arquivo:
     info = arquivo.read()
     info = info.split('\n')
     grafo.lerArquivo(info)
