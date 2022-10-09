@@ -24,9 +24,9 @@ def FloydWarshall(G):
 
     return M
 
-
+'''
 grafo = Grafo()
-with open('teste.txt', 'r') as arquivo:
+with open('facebook_santiago.net', 'r') as arquivo:
     info = arquivo.read()
     info = info.split('\n')
     grafo.lerArquivo(info)
@@ -38,4 +38,4 @@ for c in Matrix:
     list = str(c)
     list = list[1:-1].replace(' ', '')
     print(node + ':' + list)
-    id += 1
+    id += 1 '''

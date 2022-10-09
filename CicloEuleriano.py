@@ -5,10 +5,12 @@ def Hierholzer(g: Grafo):
     C = {}
     for e in g.arestas():
         C[frozenset([e[0].id, e[1].id])] = False
-    for i in range(1, g.qtdVertices()):
+    i = 1
+    while i < g.qtdVertices():
         v = g.getNodo(str(i))
         if v.conections > 0:
             break
+        i += 1
     r, ciclo = buscaCiclo(g, i, C)
     if r == False:
         print(0)
@@ -62,10 +64,10 @@ def buscaCiclo(g: Grafo, v: str, C):
                     ciclo.insert(i, nodo)
     return (True, ciclo)
 
-
+'''
 grafo = Grafo()
-with open(r'D:\UFSC\Grafos\atividade1\Grafos-A1\teste_ciclo.net', 'r') as arquivo:
+with open('ContemCicloEuleriano.net', 'r') as arquivo:
     info = arquivo.read()
     info = info.split('\n')
     grafo.lerArquivo(info)
-(Hierholzer(grafo))
+(Hierholzer(grafo))'''
