@@ -73,9 +73,11 @@ class Grafo():
                     self.nE += 1
                     self.E.append([u, v, valores[2]])
 
-'''
+
+# Exemplo de execução:
+
 grafo = Grafo()
 with open('facebook_santiago.net', 'r') as arquivo:
     info = arquivo.read()
     info = info.split('\n')
-    grafo.lerArquivo(info)'''
+    grafo.lerArquivo(info)

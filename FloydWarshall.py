@@ -24,9 +24,12 @@ def FloydWarshall(G):
 
     return M
 
-'''
+
+# Exemplo de execução:
+# (criamos um arquivo de teste para não demorar muito a execução)
+
 grafo = Grafo()
-with open('facebook_santiago.net', 'r') as arquivo:
+with open('teste_FW.txt', 'r') as arquivo:
     info = arquivo.read()
     info = info.split('\n')
     grafo.lerArquivo(info)
@@ -38,4 +41,4 @@ for c in Matrix:
     list = str(c)
     list = list[1:-1].replace(' ', '')
     print(node + ':' + list)
-    id += 1 '''
+    id += 1 

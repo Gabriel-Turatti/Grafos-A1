@@ -64,10 +64,12 @@ def buscaCiclo(g: Grafo, v: str, C):
                     ciclo.insert(i, nodo)
     return (True, ciclo)
 
-'''
+
+# Exemplo de execução:
+
 grafo = Grafo()
 with open('ContemCicloEuleriano.net', 'r') as arquivo:
     info = arquivo.read()
     info = info.split('\n')
     grafo.lerArquivo(info)
-(Hierholzer(grafo))'''
+(Hierholzer(grafo))

@@ -64,5 +64,7 @@ def printResult(s: str):
         count += 1
 
 
+# Exemplo de execução:
+
 num_input = input("Digite o id do nodo de origem da busca:")
 printResult(num_input)

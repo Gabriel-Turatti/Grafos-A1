@@ -58,4 +58,7 @@ def montaCaminho(Grafo: str ='facebook_santiago.net', s: str = None):
     else:
         print('Ciclo negativo encontrado!')
         
-montaCaminho('teste_ciclo.net', s='2')
+
+# Exemplo de execução:
+
+montaCaminho('facebook_santiago.net', s='2')
